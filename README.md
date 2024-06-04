@@ -22,3 +22,10 @@ The UAV Drone Replenishment project aims to develop an autonomous drone system c
 ## Acknowledgements
 - Triton AI
 - University of California, San Diego
+
+## Special Thanks
+- Jack Silberman
+- Alex Szeto
+- Colin Szeto
+- Aditya Chandra
+- Eesh Vij
