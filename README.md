@@ -27,7 +27,7 @@ The UAV Drone Replenishment project aims to develop an autonomous drone system c
 
 ## Codebase Details
 ### Object Detection
-- [/code/object-detection](code/object-detection): Python notebooks with intructions for [curating custom dataset](code/object-detection/build_custom_dataset.ipynb) and for [training a custom YOLOv5 model](code/object-detection/train_custom_yolov5.ipynb).
+- [/code/object-detection](code/object-detection): Python notebook and readme with intructions for [curating custom dataset](code/object-detection/build_custom_dataset.md) and [training a custom YOLOv5 model](code/object-detection/train_custom_yolov5.ipynb).
 ### Jetson Nano
 - [/code/jetson-nano/arducam](code/jetson-nano/arducam): Python scripts to take images and videos using downward-facing mounted Arducam
 - [/code/jetson-nano/control](code/jetson-nano/control): Flight control software
@@ -49,7 +49,7 @@ The images and videos taken from our Arducam and various drone flight tests can 
 The main deliverable of our project was the computer vision algorithm that would be running on the drone. We separated the object detection into two separate tasks which have been briefly described below. Steps to replicate these tasks have been described in detail in [code/object-detection](code/object-detection).
 
 #### Helipad Detection
-This task involved detecting the helipads the drone would have to deliver a tin can between. The drone would first have to detect one such helipad to pick up a tin can from, and then deliver the can to another such helipad. We used a YOLOv5 model for this task on a dataset collected by our drone's downward-facing ArduCam camera. The data collection, training pipeline and model deployment of this task have been described in depth in [/code/object-detection](/code/object-detection).
+This task involved detecting the helipads the drone would have to deliver a tin can between. The drone would first have to detect one such helipad to pick up a tin can from, and then deliver the can to another such helipad. We used a YOLOv5 model for this task on a dataset collected by our drone's downward-facing ArduCam camera. The data collection, training pipeline and model deployment of this task have been described in depth in [/code/object-detection/train_custom_yolov5.ipynb](/code/object-detection/train_custom_yolov5.ipynb).
 <!-- 
 <div align="center">
     <img src="images/helipad.jpeg" alt="UAV Rep Task" />
@@ -62,7 +62,7 @@ This task involved detecting the helipads the drone would have to deliver a tin 
 
 
 #### Tin Can Detection
-For this task, our drone was required to detect red, blue and green colored tin cans. Since the cans are all RGB and circles of the same size, we decided to downgrade from a YOLO model and use a simple OpenCV algorithm that uses an HSV color scale to find contours. This task is still under development.
+For this task, our drone was required to detect red, blue and green colored tin cans. Since the cans are all RGB and circles of the same size, we decided to downgrade from a YOLO model and use a simple OpenCV algorithm that uses an HSV color scale to find contours. This task is still under development, but the skeleton algorithm can be found in [code/object-detection/detect_circle.ipynb](code/object-detection/detect_circle.ipynb).
 <div align="center">
     <img src="images/tin_can_detect.png" alt="tin_can_detection" />
 </div>
@@ -88,10 +88,31 @@ Once dataset collection and curation is completed, the next step is to annotate 
     <img src="images/annotating.gif" alt="Annotating Images">
 </div>
 
-<!-- ## Replication
+## Replication
 
-### Object Detection
-We recommend running th -->
+### Object Detection (train custom YOLOv5 model)
+1. We recommend running this code inside a virtual environment. To create a virtual environment:
+```
+python3 -m venv venv
+```
+**Activate** the `venv`.
+If using MacOS or Linux do:
+```
+source venv/bin/activate
+```
+On Windows:
+```
+venv\Scripts\activate
+```
+2. If creating a custom dataset, follow the instructions in [build_custom_dataset.md](code/object-detection/build_custom_dataset.md).
+
+    Then, to train your model on the custom dataset, follow the instructions in [train_custom_yolov5.ipynb](code/object-detection/train_custom_yolov5.ipynb).
+
+3. To deactivate the `venv`, run:
+```
+deactivate
+```
+
 
 ## Documentation
 - [Project Specification](admin/reports/Project_Specification.pdf)
