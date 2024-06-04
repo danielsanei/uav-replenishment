@@ -95,7 +95,7 @@ The Jetson Nano is a computer for embedded applications and AI IoT that operated
 - [Get Started With Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit)
 
 ### ROS2 Humble Docker Container
-In our project, we advised to use ROS2 Humble for the development environment. However, our host machine (the Jetson Nano) was flashed with Ubuntu 18.04 version, whereas ROS2 Humble required Ubuntu 22.04 version. To resolve this conflict, we pulled a Docker image for ROS2 Humble, and ran the container to continue development. More in-depth details and instructions can be found in the Jetson Nano PDF within `/admin/documentation`. For simple instructions, please refer to the following:
+In our project, we advised to use ROS2 Humble for the development environment. However, our host machine (the Jetson Nano) was flashed with Ubuntu 18.04 version, whereas ROS2 Humble required Ubuntu 22.04 version. To resolve this conflict, we pulled a Docker image for ROS2 Humble, and ran the container to continue development. More in-depth details and instructions can be found in the [Jetson Nano Documentation](https://github.com/danielsanei/uav-replenishment/blob/b42760e34546f4c06329e9983a741f20d9fe8993/admin/documentation/Jetson%20Nano.pdf) within `/admin/documentation`. For simple instructions, please refer to the following:
 1. Open a terminal window inside the host machine's Ubuntu 18.04 version. To pull the Docker image with Ubuntu 22.04 version for ROS2 Humble: 
 ```
 docker pull dustynv/ros:humble-ros-base-l4t-r36.2.0
@@ -108,12 +108,12 @@ docker run --runtime nvidia -it --network=host dustynv/ros:humble-ros-base-l4t-r
 ```
 sudo chown -R [INSERT-HOST-MACHINE-USERNAME]:[INSERT-HOST-MACHINE-USERNAME] ~/[INSERT-HOST-WORKSPACE-DIRECTORY]
 ```
-After this step, files in the host machine's workspace directory will be accessible from inside the Docker container, and changes made inside the Docker container workspace directory will be reflected in the host machine's workspace directory. Please refer to the Jetson Nano documentation for more specific details on this solution.
+After this step, files in the host machine's workspace directory will be accessible from inside the Docker container, and changes made inside the Docker container workspace directory will be reflected in the host machine's workspace directory. Please refer to the [Jetson Nano Documentation](https://github.com/danielsanei/uav-replenishment/blob/b42760e34546f4c06329e9983a741f20d9fe8993/admin/documentation/Jetson%20Nano.pdf) for more specific details on this solution.
 4. To access specific hardware devices (i.e. cameras, USB devices) from within the Docker container, you will need to utilize device mapping and run the container in privileged mode:
 ```
 sudo docker run --runtime nvidia -it --network=host --privileged -v ~/[INSERT-HOST-WORKSPACE-DIRECTORY]:/[INSERT-DOCKER-WORKSPACE-DIRECTORY] --device=/dev/[ARDUCAM-DEVICE] --device=/dev/[PIXHAWK-DEVICE] dustynv/ros:humble-ros-base-l4t-r36.2.0
 ```
-More information about the command above is present in the Jetson Nano documentation.
+More information about the command above is present in the [Jetson Nano Documentation](https://github.com/danielsanei/uav-replenishment/blob/b42760e34546f4c06329e9983a741f20d9fe8993/admin/documentation/Jetson%20Nano.pdf).
 
 ### Arducam
 The Arducam is a signficant part of this project. Once the camera is connected to the Jetson Nano, install the following packages in the host machine's terminal:
