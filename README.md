@@ -46,17 +46,17 @@ The images and videos taken from our Arducam and various drone flight tests can 
 - Tin can detection
 - Helipad detection -->
 
-Our project included two object detection tasks, which have been briefly described below:
+The main deliverable of our project was the computer vision algorithm that would be running on the drone. We separated the object detection into two separate tasks which have been briefly described below. Steps to replicate these tasks have been described in detail in [code/object-detection](code/object-detection).
 
 #### Helipad Detection
 This task involved detecting the helipads the drone would have to deliver a tin can between. The drone would first have to detect one such helipad to pick up a tin can from, and then deliver the can to another such helipad. We used a YOLOv5 model for this task on a dataset collected by our drone's downward-facing ArduCam camera. The data collection, training pipeline and model deployment of this task have been described in depth in [/code/object-detection](/code/object-detection).
-
-<!-- <div align="center">
+<!-- 
+<div align="center">
     <img src="images/helipad.jpeg" alt="UAV Rep Task" />
 </div> -->
 <div align="center">
-    <img src="images/helipad.jpeg" alt="helipad" style="display: inline-block; margin-right: 20px;" />
-    <img src="images/live_obj_detection.gif" alt="Live Object Detection" style="display: inline-block;" />
+    <img src="images/helipad.jpeg" width=350 alt="helipad" style="display: inline-block" />
+    <img src="images/live_obj_detection.gif" width=350 alt="Live Object Detection" style="display: inline-block;" />
 </div>
 
 
@@ -64,7 +64,7 @@ This task involved detecting the helipads the drone would have to deliver a tin 
 #### Tin Can Detection
 For this task, our drone was required to detect red, blue and green colored tin cans. Since the cans are all RGB and circles of the same size, we decided to downgrade from a YOLO model and use a simple OpenCV algorithm that uses an HSV color scale to find contours. This task is still under development.
 <div align="center">
-    <img src="images/tin_can_detect.png" alt="UAV Rep Task" />
+    <img src="images/tin_can_detect.png" alt="tin_can_detection" />
 </div>
 
 ### Data Collection
@@ -87,6 +87,11 @@ Once dataset collection and curation is completed, the next step is to annotate 
 <div align="center">
     <img src="images/annotating.gif" alt="Annotating Images">
 </div>
+
+<!-- ## Replication
+
+### Object Detection
+We recommend running th -->
 
 ## Documentation
 - [Project Specification](admin/reports/Project_Specification.pdf)
