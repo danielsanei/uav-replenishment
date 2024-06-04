@@ -23,7 +23,7 @@ The UAV Drone Replenishment project aims to develop an autonomous drone system c
 ## Repository Organization
 - /admin: Administrative documents, including reports, documentation, presentations
 - /code: Source code for the project
-- /media: Images and videos of drone tests and results
+- /images: Images used throughout the repository
 
 ## Codebase Details
 ### Object Detection
@@ -34,6 +34,10 @@ The UAV Drone Replenishment project aims to develop an autonomous drone system c
 - [/code/jetson-nano/miscellaneous](code/jetson-nano/miscellaneous): Other Python scripts and files
 - [/code/jetson-nano/ros](code/jetson-nano/ros): Volume mount for ROS2 Humble host machine workspace
 - [/code/jetson-nano/terminal](code/jetson-nano/terminal): Useful terminal commands
+
+## Media
+The images and videos taken from our Arducam and various drone flight tests can be accessed from the following link:
+- [Image and Video Storage](https://drive.google.com/drive/folders/1x5Ip4g3WwqQiWM1Pjkvi5ud1pZbha7pc?usp=sharing)
 
 
 ## Data Collection
@@ -49,6 +53,10 @@ Once dataset collection and curation is completed, the next step is to annotate 
 <div align="center">
     <img src="images/annotating.gif" alt="Annotating Images">
 </div>
+
+# Object Detection
+For replicating our object detection for this project, we have created two tutorials to follow along. The first provides an overview of how to build a custom dataset on RoboFlow, and the second covers how to train a YOLOv5 model based on custom objects. Both tutorials are located in the following directory:
+- /code/object-detection
 
 ## Acknowledgements
 - Triton AI
