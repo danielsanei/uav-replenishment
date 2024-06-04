@@ -39,24 +39,61 @@ The UAV Drone Replenishment project aims to develop an autonomous drone system c
 The images and videos taken from our Arducam and various drone flight tests can be accessed from the following link:
 - [Image and Video Storage](https://drive.google.com/drive/folders/1x5Ip4g3WwqQiWM1Pjkvi5ud1pZbha7pc?usp=sharing)
 
+## Object Detection
+<!-- For replicating our object detection for this project, we have created two tutorials to follow along. The first provides an overview of how to build a custom dataset on RoboFlow, and the second covers how to train a YOLOv5 model based on custom objects. Both tutorials are located in the following directory:
+- /code/object-detection -->
+<!-- Our project included two object detection tasks:
+- Tin can detection
+- Helipad detection -->
 
-## Data Collection
-For this project we needed to create our own datasets for both object detection aspects of our project: tin can detection and helipad detection. To start, we created a temporary tin can dataset by placing three colored tin cans down around campus and taking photos with an iPhone from a high vantage point. This was an attempt to simulate the conditions that the drone would encounter on its missions using the high vantage point and concrete colored background. However, this dataset was created with a significant oversight: the camera used on the drone is an Arducam, not an iPhone. iPhones take much higher quality photos than the Arducam and are less wide lensed than the fisheye lens of the Arducam. Unfortunately, these factors meant that this dataset could not be used to train the model used on the drone in competition, but it did allow us to test the capabilities of our Yolov5 model in tin can detection and learn how to deploy the model on the drone. 
+Our project included two object detection tasks, which have been briefly described below:
 
+#### Helipad Detection
+This task involved detecting the helipads the drone would have to deliver a tin can between. The drone would first have to detect one such helipad to pick up a tin can from, and then deliver the can to another such helipad. We used a YOLOv5 model for this task on a dataset collected by our drone's downward-facing ArduCam camera. The data collection, training pipeline and model deployment of this task have been described in depth in [/code/object-detection](/code/object-detection).
+
+<!-- <div align="center">
+    <img src="images/helipad.jpeg" alt="UAV Rep Task" />
+</div> -->
+<div align="center">
+    <img src="images/helipad.jpeg" alt="helipad" style="display: inline-block; margin-right: 20px;" />
+    <img src="images/live_obj_detection.gif" alt="Live Object Detection" style="display: inline-block;" />
+</div>
+
+
+
+#### Tin Can Detection
+For this task, our drone was required to detect red, blue and green colored tin cans. Since the cans are all RGB and circles of the same size, we decided to downgrade from a YOLO model and use a simple OpenCV algorithm that uses an HSV color scale to find contours. This task is still under development.
+<div align="center">
+    <img src="images/tin_can_detect.png" alt="UAV Rep Task" />
+</div>
+
+### Data Collection
+#### Stage 1
+To start, we created a temporary tin can dataset by placing three colored tin cans down around campus and **taking photos with an iPhone** from a high vantage point. This was an attempt to simulate the conditions that the drone would encounter on its missions using the high vantage point and concrete colored background. However, this dataset was created with a significant oversight: the camera used on the drone is an Arducam, not an iPhone. iPhones take much higher quality photos than the Arducam and are less wide lensed than the fisheye lens of the Arducam. Unfortunately, these factors meant that this dataset could not be used to train the model used on the drone in competition, but it did allow us to test the capabilities of our Yolov5 model in tin can detection and learn how to deploy the model on the drone. 
+
+#### Stage 2
 Next, we learned from our mistakes on the first tin can detection dataset and worked to build a helipad detection model using images from the Arducam. To do this, we set up a python script to take a photo once a second and flew our drone above a makeshift helipad in many conditions. The makeshift helipad was made in lieu of the real one by taping 6 grey posters together and drawing circles onto the landing pad to scale. This dataset allowed us to train a detection model on competition similar conditions and worked on the real helipad once we were able to get it printed. 
 
-Finally, we were able to get our real helipad printed and repeated the data collection procedure, with tin cans on the helipad. At this point, we realized that it made more sense to use OpenCV for tin can detection, so we no longer needed a tin can dataset, but we wanted to similar the noise that the RGB cans would cause in a helipad model. 
+#### Stage 3
+Finally, we were able to get our real helipad printed and repeated the data collection procedure, with tin cans on the helipad. At this point, we realized that it made more sense to use OpenCV for tin can detection, so we no longer needed a tin can dataset, but we wanted to simulate the noise that the RGB cans would cause in a helipad model. 
 
-## Annotation 
+<div align="center">
+    <img src="images/datasets.png" alt="datasets" />
+</div>
+
+### Annotation 
 Once dataset collection and curation is completed, the next step is to annotate the dataset on Roboflow. Annotation means **creating ground truths** of where the objects that we are looking to detect are located on the image. We used Roboflow’s smart polygon tool to highlight two objects: the `helipad` and the centered `circle-targets`. We annotated more than 1500 images over several iterations of our dataset in order to curate a diverse dataset for our model to train on. 
 
 <div align="center">
     <img src="images/annotating.gif" alt="Annotating Images">
 </div>
 
-# Object Detection
-For replicating our object detection for this project, we have created two tutorials to follow along. The first provides an overview of how to build a custom dataset on RoboFlow, and the second covers how to train a YOLOv5 model based on custom objects. Both tutorials are located in the following directory:
-- /code/object-detection
+## Documentation
+- [Project Specification](admin/reports/Project Specification.pdf)
+- [Milestone Report](admin/reports/Milestone Report.pdf)
+- [Final Oral Presentation](documentation/final_ppt.pptx)
+- Techinal Report (under construction)
+
 
 ## Acknowledgements
 - Triton AI
