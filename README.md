@@ -23,14 +23,23 @@ The UAV Drone Replenishment project aims to develop an autonomous drone system c
 ## Repository Organization
 - /admin: Administrative documents, including reports, documentation, presentations
 - /code: Source code for the project
-- /media: Images and videos of drone tests and results
+- /images: Images used throughout the repository
 
 ## Codebase Details
-- /code/arducam: Python scripts to take images and videos using downward-facing mounted Arducam
 - /code/control: Flight control software
-- /code/miscellaneous: Other Python scripts and files
-- /code/ros: Volume mount for ROS2 Humble host machine workspace
-- /code/terminal: Useful terminal commands
+- /code/jetson-nano: All the code used to operate the Jetson Nano
+- /code/object-detection: Full tutorials on building a dataset and training a custom YOLOv5 model
+
+### Jetson Nano Details
+- /code/jetson-nano/arducam: Python scripts to take images and videos using downward-facing mounted Arducam
+- /code/jetson-nano/media: Sample images used to initially test Python script functionality before full-scale deployment
+- /code/jetson-nano/miscellaneous: Other Python scripts and files
+- /code/jetson-nano/ros: Volume mount for ROS2 Humble host machine workspace
+- /code/jetson-nano/terminal: Useful terminal commands
+
+## Media
+The images and videos taken from our Arducam and various drone flight tests can be accessed from the following link:
+- [Image and Video Storage](https://drive.google.com/drive/folders/1x5Ip4g3WwqQiWM1Pjkvi5ud1pZbha7pc?usp=sharing)
 
 ## Data Collection
 For this project we needed to create our own datasets for both object detection aspects of our project: tin can detection and helipad detection. To start, we created a temporary tin can dataset by placing three colored tin cans down around campus and taking photos with an iPhone from a high vantage point. This was an attempt to simulate the conditions that the drone would encounter on its missions using the high vantage point and concrete colored background. However, this dataset was created with a significant oversight: the camera used on the drone is an Arducam, not an iPhone. iPhones take much higher quality photos than the Arducam and are less wide lensed than the fisheye lens of the Arducam. Unfortunately, these factors meant that this dataset could not be used to train the model used on the drone in competition, but it did allow us to test the capabilities of our Yolov5 model in tin can detection and learn how to deploy the model on the drone. 
@@ -41,6 +50,10 @@ Finally, we were able to get our real helipad printed and repeated the data coll
 
 ## Annotation 
 Once dataset collection and curation is completed, the next step is to annotate the dataset on Roboflow. Annotation, in this case, means creating ground truths of where the objects that we are looking to detect using Computer Vision are located pixel-wise on the image. To do this, we used Roboflow’s smart polygon tool to highlight the helipad and the center circle. It’s also important to mention that it is beneficial to leave images in the dataset that cannot see the helipad, but simply mark them as null so the algorithm can learn when it does not see a helipad. As a group, we annotated over 2000 images in order to create a vast dataset for our model to train on. 
+
+# Object Detection
+For replicating our object detection for this project, we have created two tutorials to follow along. The first provides an overview of how to build a custom dataset on RoboFlow, and the second covers how to train a YOLOv5 model based on custom objects. Both tutorials are located in the following directory:
+- /code/object-detection
 
 ## Acknowledgements
 - Triton AI
