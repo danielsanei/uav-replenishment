@@ -69,13 +69,19 @@ For this task, our drone was required to detect red, blue and green colored tin 
 
 ### Data Collection
 #### Stage 1
-To start, we created a temporary tin can dataset by placing three colored tin cans down around campus and **taking photos with an iPhone** from a high vantage point. This was an attempt to simulate the conditions that the drone would encounter on its missions using the high vantage point and concrete colored background. However, this dataset was created with a significant oversight: the camera used on the drone is an Arducam, not an iPhone. iPhones take much higher quality photos than the Arducam and are less wide lensed than the fisheye lens of the Arducam. Unfortunately, these factors meant that this dataset could not be used to train the model used on the drone in competition, but it did allow us to test the capabilities of our Yolov5 model in tin can detection and learn how to deploy the model on the drone. 
+- **Objective**: Simulate drone conditions using iPhone photos from a high vantage point.
+- **Issue**: iPhone and Arducam differences in quality and lens type made the dataset unsuitable for final training.
+- **Outcome**: Allowed testing of Yolov5 model and deployment practice on the drone.
 
 #### Stage 2
-Next, we learned from our mistakes on the first tin can detection dataset and worked to build a helipad detection model using images from the Arducam. To do this, we set up a python script to take a photo once a second and flew our drone above a makeshift helipad in many conditions. The makeshift helipad was made in lieu of the real one by taping 6 grey posters together and drawing circles onto the landing pad to scale. This dataset allowed us to train a detection model on competition similar conditions and worked on the real helipad once we were able to get it printed. 
+- **Objective**: Collect images using Arducam to build a helipad detection model.
+- **Method**: Python script for periodic photos (1 per second), drone flights over a makeshift helipad.
+- **Outcome**: Trained a model that worked on competition-adjacent conditions.
 
 #### Stage 3
-Finally, we were able to get our real helipad printed and repeated the data collection procedure, with tin cans on the helipad. At this point, we realized that it made more sense to use OpenCV for tin can detection, so we no longer needed a tin can dataset, but we wanted to simulate the noise that the RGB cans would cause in a helipad model. 
+- **Objective**: Validate detection model with official helipad and simulate noise from RGB cans.
+- **Method**: Repeated Stage 2 data collection method with printed helipad and tin cans.
+- **Outcome**: Decided to use OpenCV for tin can detection, and YOLOv5 for helipad detection.
 
 <div align="center">
     <img src="images/datasets.png" alt="datasets" />
@@ -87,6 +93,30 @@ Once dataset collection and curation is completed, the next step is to annotate 
 <div align="center">
     <img src="images/annotating.gif" alt="Annotating Images">
 </div>
+
+### Dataset Creation
+After annotating all the images, we proceed to finalize the dataset creation. We utilized Roboflow to preprocess and augment the raw images using the following settings:
+
+
+#### Preprocessing
+- **Auto-Orient**: Applied
+- **Resize**: Images within 416x416 (while maintaining aspect ratio)
+- **Auto-Adjust Contrast**: Using Contrast Stretching 
+
+#### Augmentation
+For each training example, 3 augmented outputs are generated using the following transformations:
+- **Rotation**: Between -15° and +15°
+- **Shear**: Horizontal shear: ±10°, Vertical shear: ±10°
+- **Exposure**: Between -10% and +10%
+- **Blur**: Up to 1.6 pixels
+- **Noise**: Up to 0.1% of the pixels
+
+#### Datset Split
+- **Train**: 90% (1350 images)
+- **Validation**: 7% (108 images)
+- **Test**: 3% (42 images)
+
+
 
 ## Replication
 
