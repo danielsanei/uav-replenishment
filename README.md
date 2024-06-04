@@ -1,4 +1,30 @@
 # UAV Drone Replenishment Project
+## Table of Contents
+1. [Overview](#overview)
+2. [Team Members](#team-members)
+3. [Project Structure](#project-structure)
+4. [Codebase Details](#codebase-details)
+    - [Object Detection](#object-detection)
+    - [Jetson Nano](#jetson-nano)
+5. [Media](#media)
+6. [Object Detection](#object-detection-1)
+    - [Helipad Detection](#helipad-detection)
+    - [Tin Can Detection](#tin-can-detection)
+    - [Data Collection](#data-collection)
+    - [Annotation](#annotation)
+    - [Dataset Creation](#dataset-creation)
+7. [Replication](#replication)
+    - [Jetson Nano](#jetson-nano-1)
+    - [ROS2 Humble Docker Container](#ros2-humble-docker-container)
+    - [Arducam](#arducam)
+    - [Storage](#storage)
+    - [Inference](#inference)
+    - [MAVROS](#mavros)
+    - [Object Detection (train custom YOLOv5 model)](#object-detection-train-custom-yolov5-model)
+8. [Documentation](#documentation)
+9. [Acknowledgements](#acknowledgements)
+10. [Special Thanks](#special-thanks)
+
 
 ## Overview
 The UAV Drone Replenishment project aims to develop an autonomous drone system capable of performing object detection and manipulation tasks in challenging environments. This project is part of Triton AI, a UC San Diego organization participating in RoboNation's 2024 RobotX Maritime Challenge. This project was conducted under the guidance of Professor Kastner and fellow staff for CSE 145 (Embedded System Design Project) during the Spring 2024 quarter.
@@ -21,9 +47,9 @@ The UAV Drone Replenishment project aims to develop an autonomous drone system c
 - Object Detection: YOLOv5, OpenCV
 
 ## Repository Organization
-- /admin: Administrative documents, including reports, documentation, presentations
-- /code: Source code for the project
-- /images: Images used throughout the repository
+- [/admin](/admin): Administrative documents, including reports, documentation, presentations
+- [/code](/code): Source code for the project
+- [/images](/images): Images used throughout the repository
 
 ## Codebase Details
 ### Object Detection
