@@ -26,11 +26,15 @@ The UAV Drone Replenishment project aims to develop an autonomous drone system c
 - /media: Images and videos of drone tests and results
 
 ## Codebase Details
-- /code/arducam: Python scripts to take images and videos using downward-facing mounted Arducam
-- /code/control: Flight control software
-- /code/miscellaneous: Other Python scripts and files
-- /code/ros: Volume mount for ROS2 Humble host machine workspace
-- /code/terminal: Useful terminal commands
+### Object Detection
+- [/code/object-detection](code/object-detection): Python notebooks with intructions for [curating custom dataset](code/object-detection/build_custom_dataset.ipynb) and for [training a custom YOLOv5 model](code/object-detection/train_custom_yolov5.ipynb).
+### Jetson Nano
+- [/code/jetson-nano/arducam](code/jetson-nano/arducam): Python scripts to take images and videos using downward-facing mounted Arducam
+- [/code/jetson-nano/control](code/jetson-nano/control): Flight control software
+- [/code/jetson-nano/miscellaneous](code/jetson-nano/miscellaneous): Other Python scripts and files
+- [/code/jetson-nano/ros](code/jetson-nano/ros): Volume mount for ROS2 Humble host machine workspace
+- [/code/jetson-nano/terminal](code/jetson-nano/terminal): Useful terminal commands
+
 
 ## Data Collection
 For this project we needed to create our own datasets for both object detection aspects of our project: tin can detection and helipad detection. To start, we created a temporary tin can dataset by placing three colored tin cans down around campus and taking photos with an iPhone from a high vantage point. This was an attempt to simulate the conditions that the drone would encounter on its missions using the high vantage point and concrete colored background. However, this dataset was created with a significant oversight: the camera used on the drone is an Arducam, not an iPhone. iPhones take much higher quality photos than the Arducam and are less wide lensed than the fisheye lens of the Arducam. Unfortunately, these factors meant that this dataset could not be used to train the model used on the drone in competition, but it did allow us to test the capabilities of our Yolov5 model in tin can detection and learn how to deploy the model on the drone. 
@@ -40,7 +44,11 @@ Next, we learned from our mistakes on the first tin can detection dataset and wo
 Finally, we were able to get our real helipad printed and repeated the data collection procedure, with tin cans on the helipad. At this point, we realized that it made more sense to use OpenCV for tin can detection, so we no longer needed a tin can dataset, but we wanted to similar the noise that the RGB cans would cause in a helipad model. 
 
 ## Annotation 
-Once dataset collection and curation is completed, the next step is to annotate the dataset on Roboflow. Annotation, in this case, means creating ground truths of where the objects that we are looking to detect using Computer Vision are located pixel-wise on the image. To do this, we used Roboflow’s smart polygon tool to highlight the helipad and the center circle. It’s also important to mention that it is beneficial to leave images in the dataset that cannot see the helipad, but simply mark them as null so the algorithm can learn when it does not see a helipad. As a group, we annotated over 2000 images in order to create a vast dataset for our model to train on. 
+Once dataset collection and curation is completed, the next step is to annotate the dataset on Roboflow. Annotation means **creating ground truths** of where the objects that we are looking to detect are located on the image. We used Roboflow’s smart polygon tool to highlight two objects: the `helipad` and the centered `circle-targets`. We annotated more than 1500 images over several iterations of our dataset in order to curate a diverse dataset for our model to train on. 
+
+<div align="center">
+    <img src="images/annotating.gif" alt="Annotating Images">
+</div>
 
 ## Acknowledgements
 - Triton AI
