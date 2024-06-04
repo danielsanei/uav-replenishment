@@ -1,0 +1,1 @@
+sudo docker run --privileged --net=host --runtime=nvidia --mount source=roboflow,target=/tmp/cache -e NUM_WORKERS=1 roboflow/roboflow-inference-server-jetson-4.6.1:latest
