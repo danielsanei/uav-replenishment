@@ -110,7 +110,7 @@ To set up a volume mount, create a workspace directory in the host machine, and 
 ```
 sudo chown -R [INSERT-HOST-MACHINE-USERNAME]:[INSERT-HOST-MACHINE-USERNAME] ~/[INSERT-HOST-WORKSPACE-DIRECTORY]
 ```
-After this step, files in the host machine's workspace directory will be accessible from inside the Docker container, and changes made inside the Docker container workspace directory will be reflected in the host machine's workspace directory. Please refer to the [Jetson Nano Documentation](https://github.com/danielsanei/uav-replenishment/blob/b42760e34546f4c06329e9983a741f20d9fe8993/admin/documentation/Jetson%20Nano.pdf) for more specific details on this solution. <br/><br/>
+After this step, files in the host machine's workspace directory will be accessible from inside the Docker container, and changes made inside the Docker container workspace directory will be reflected in the host machine's workspace directory. Please refer to the [Jetson Nano Documentation](https://github.com/danielsanei/uav-replenishment/blob/b42760e34546f4c06329e9983a741f20d9fe8993/admin/documentation/Jetson%20Nano.pdf) for more specific details on this solution. <br/>
 
 4. To access specific hardware devices (i.e. cameras, USB devices) from within the Docker container, you will need to utilize device mapping and run the container in privileged mode:
 ```
