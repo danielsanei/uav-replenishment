@@ -143,6 +143,12 @@ df -h
 ```
 Storage issues may be resolved by performing cleaning (removing outdated/unused packages), offloading Arducam images and videos to a Google Drive folder, and managing Docker containers.
 
+### Inference
+We pursued object detection development in stages. The first step was to use the Arducam to capture raw images, the next step was to run a static inference on the images we had already taken (online, connected to internet), and the final step was running an inference on the images live, while the drone is flying (offline, not connected to internet). Here is the command to run an inference with our model:
+```
+sudo docker run --privileged --net=host --runtime=nvidia --mount source=roboflow,target=/tmp/cache -e NUM_WORKERS=1 roboflow/roboflow-inference-server-jetson-4.6.1:latest
+```
+
 ### MAVROS
 MAVROS is a ROS package which allows you to control the drone using the MAVLink protocol. We used this package to integrate the Jetson Nano with our Pixhawk (4.5.1) via USB, although this is possible through other connections as well. To install MAVROS, please follow these steps in the ROS2 Humble Docker container's terminal:
 ```
