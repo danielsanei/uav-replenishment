@@ -148,6 +148,7 @@ We pursued object detection development in stages. The first step was to use the
 ```
 sudo docker run --privileged --net=host --runtime=nvidia --mount source=roboflow,target=/tmp/cache -e NUM_WORKERS=1 roboflow/roboflow-inference-server-jetson-4.6.1:latest
 ```
+Please note that this terminal must remain open and running in order to correctly run an inference. Any following terminal commands must be entered into a separate terminal window.
 
 ### MAVROS
 MAVROS is a ROS package which allows you to control the drone using the MAVLink protocol. We used this package to integrate the Jetson Nano with our Pixhawk (4.5.1) via USB, although this is possible through other connections as well. To install MAVROS, please follow these steps in the ROS2 Humble Docker container's terminal:
