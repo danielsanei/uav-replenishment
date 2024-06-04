@@ -33,7 +33,7 @@ for image_name in os.listdir(image_dir):
             encoded_image = base64.b64encode(image_file.read()).decode("utf-8")
 
         response = requests.post(
-            "https://detect.roboflow.com/helipad_detection-2zrua/1?api_key=6BSPzyvwTjTvvM4RkVxd",
+            "https://detect.roboflow.com/helipad_detection-2zrua/1?api_key=[YOUR_API_KEY]",
             data=encoded_image,
             headers={"Content-Type": "application/x-www-form-urlencoded"}
         )

@@ -25,7 +25,7 @@ while True:
         print(f"Saved image: {image_path}")  # Add this line to check if images are being saved
 
         # Run inference on the image
-        inference_command = f'base64 {image_path} | curl -d @- "http://localhost:9001/target-detection-ee3x5/1?api_key=6BSPzyvwTjTvvM4RkVxd"'
+        inference_command = f'base64 {image_path} | curl -d @- "http://localhost:9001/target-detection-ee3x5/1?api_key=[YOUR_API_KEY]"'
         inference_result = os.popen(inference_command).read()
         predictions = json.loads(inference_result)
 

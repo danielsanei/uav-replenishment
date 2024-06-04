@@ -15,11 +15,10 @@ while True:
         cv2.imwrite(image_path, frame)
         
         # Optional: Run inference on the image
-        # os.system(f'base64 {image_path} | curl -d @- "http://localhost:9001/target-detection-ee3x5/1?api_key=6BSPzyvwTjTvvM4RkVxd"')
+        # os.system(f'base64 {image_path} | curl -d @- "http://localhost:9001/target-detection-ee3x5/1?api_key=[YOUR_API_KEY]"')
         
         # Wait for a specific interval
         time.sleep(1)  # Capture every 2 seconds
 
 cap.release()
 cv2.destroyAllWindows()
-

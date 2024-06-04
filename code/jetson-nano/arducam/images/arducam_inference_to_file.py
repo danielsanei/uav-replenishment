@@ -60,7 +60,7 @@ while True:
         print(f"Saved image: {original_image_path}")
 
         # Run inference on the image
-        inference_command = f'base64 {original_image_path} | curl -d @- "http://localhost:9001/helipad_detection-2zrua/4?api_key=6BSPzyvwTjTvvM4RkVxd"'
+        inference_command = f'base64 {original_image_path} | curl -d @- "http://localhost:9001/helipad_detection-2zrua/4?api_key=[YOUR_API_KEY]"'
         inference_result = os.popen(inference_command).read()
         predictions = json.loads(inference_result)
 
