@@ -95,7 +95,7 @@ The Jetson Nano is a computer for embedded applications and AI IoT that operated
 - [Get Started With Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit)
 
 ### ROS2 Humble Docker Container
-In our project, we advised to use ROS2 Humble for the development environment. However, our host machine (the Jetson Nano) was flashed with Ubuntu 18.04 version, whereas ROS2 Humble required Ubuntu 22.04 version. To resolve this conflict, we pulled a Docker image for ROS2 Humble, and ran the container to continue development. <br />
+In our project, we advised to use ROS2 Humble for the development environment. However, our host machine (the Jetson Nano) was flashed with Ubuntu 18.04 version, whereas ROS2 Humble required Ubuntu 22.04 version. To resolve this conflict, we pulled a Docker image for ROS2 Humble, and ran the container to continue development. <br/>
 More in-depth details and instructions can be found in the [Jetson Nano Documentation](https://github.com/danielsanei/uav-replenishment/blob/b42760e34546f4c06329e9983a741f20d9fe8993/admin/documentation/Jetson%20Nano.pdf) within `/admin/documentation`. For simple instructions, please refer to the following:
 1. Open a terminal window inside the host machine's Ubuntu 18.04 version. To pull the Docker image with Ubuntu 22.04 version for ROS2 Humble: 
 ```
@@ -105,12 +105,12 @@ docker pull dustynv/ros:humble-ros-base-l4t-r36.2.0
 ```
 docker run --runtime nvidia -it --network=host dustynv/ros:humble-ros-base-l4t-r36.2.0
 ```
-3. Now, you have successfully pulled and ran the Docker container for the ROS2 Humble environment. However, since Docker containers are ephemeral, changes inside this container do not persist after the container stops. Therefore, we will use volume mounts to link files from the Docker container to the host machine, so that they are not lost. <br />
+3. Now, you have successfully pulled and ran the Docker container for the ROS2 Humble environment. However, since Docker containers are ephemeral, changes inside this container do not persist after the container stops. Therefore, we will use volume mounts to link files from the Docker container to the host machine, so that they are not lost. <br/>
 To set up a volume mount, create a workspace directory in the host machine, and another within the Docker container (you may need to restart the Docker container for this step). To set up the volume mount, change the file ownership:
 ```
 sudo chown -R [INSERT-HOST-MACHINE-USERNAME]:[INSERT-HOST-MACHINE-USERNAME] ~/[INSERT-HOST-WORKSPACE-DIRECTORY]
 ```
-After this step, files in the host machine's workspace directory will be accessible from inside the Docker container, and changes made inside the Docker container workspace directory will be reflected in the host machine's workspace directory. Please refer to the [Jetson Nano Documentation](https://github.com/danielsanei/uav-replenishment/blob/b42760e34546f4c06329e9983a741f20d9fe8993/admin/documentation/Jetson%20Nano.pdf) for more specific details on this solution. <br />
+After this step, files in the host machine's workspace directory will be accessible from inside the Docker container, and changes made inside the Docker container workspace directory will be reflected in the host machine's workspace directory. Please refer to the [Jetson Nano Documentation](https://github.com/danielsanei/uav-replenishment/blob/b42760e34546f4c06329e9983a741f20d9fe8993/admin/documentation/Jetson%20Nano.pdf) for more specific details on this solution. <br/>
 4. To access specific hardware devices (i.e. cameras, USB devices) from within the Docker container, you will need to utilize device mapping and run the container in privileged mode:
 ```
 sudo docker run --runtime nvidia -it --network=host --privileged -v ~/[INSERT-HOST-WORKSPACE-DIRECTORY]:/[INSERT-DOCKER-WORKSPACE-DIRECTORY] --device=/dev/[ARDUCAM-DEVICE] --device=/dev/[PIXHAWK-DEVICE] dustynv/ros:humble-ros-base-l4t-r36.2.0
@@ -125,7 +125,7 @@ sudo apt install v4l-utils
 source /opt/ros/humble/setup.bash
 v4l2-ctl --list-devices
 ```
-If you see a device listed after running the last command (likely `/dev/video0`), then you have successfully installed the package. Now, you may utilize the Arducam feed to take pictures or videos. Please refer to our `/code/arducam/jetson-nano/` directory to view our Python scripts for taking raw images, taking raw images and then running a live inference, and taking a video. <br />
+If you see a device listed after running the last command (likely `/dev/video0`), then you have successfully installed the package. Now, you may utilize the Arducam feed to take pictures or videos. Please refer to our `/code/arducam/jetson-nano/` directory to view our Python scripts for taking raw images, taking raw images and then running a live inference, and taking a video. <br/>
 Note that you may need to run `sudo apt install python3-opencv` to successfully compile our Python scripts, which use OpenCV to annotate the images after running an inference.
 To take an image with the Arducam through the ROS2 Humble Docker container, follow these steps:
 ```
