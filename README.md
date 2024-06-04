@@ -13,11 +13,19 @@ The UAV Drone Replenishment project aims to develop an autonomous drone system c
 - Hardware: Jetson Nano, Pixhawk, Arducam
 - Software: ROS2 Humble, OpenCV, ArduCopter, PyTorch, SITL Simulator
 - Ground Control Station: QGroundControl
-- Object Detection: YOLOv5
+- Object Detection: YOLOv5, OpenCV
 
 ## Repository Organization
+- /admin: Administrative documents, including reports, documentation, presentations
+- /code: Source code for the project
+- /media: Images and videos of drone tests and results
 
-## Documentation
+## Codebase Details
+- /code/arducam: Python scripts to take images and videos using downward-facing mounted Arducam
+- /code/control: Flight control software
+- /code/miscellaneous: Other Python scripts and files
+- /code/ros: Volume mount for ROS2 Humble host machine workspace
+- /code/terminal: Useful terminal commands
 
 ## Acknowledgements
 - Triton AI
