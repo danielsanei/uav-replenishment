@@ -245,6 +245,7 @@ deactivate
 - [Project Specification](admin/reports/Project_Specification.pdf)
 - [Milestone Report](admin/reports/Milestone_Report.pdf)
 - [Final Oral Presentation](admin/presentations/Final_Presentation.pdf)
+- [Final Video](https://youtu.be/ODEzaI_C438)
 - Techinal Report (under construction)
 
 
@@ -254,6 +255,7 @@ deactivate
 - University of California, San Diego
 
 ## Special Thanks
+- Ryan Kastner
 - Jack Silberman
 - Alex Szeto
 - Colin Szeto
