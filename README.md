@@ -65,6 +65,9 @@ The UAV Drone Replenishment project aims to develop an autonomous drone system c
 The images and videos taken from our Arducam and various drone flight tests can be accessed from the following link:
 - [Image and Video Storage](https://drive.google.com/drive/folders/1x5Ip4g3WwqQiWM1Pjkvi5ud1pZbha7pc?usp=sharing)
 
+Here is the project video providing a full overview of our project goals, timeline, and accomplishments:
+- [Project Video](https://youtu.be/ODEzaI_C438)
+
 ## Object Detection
 <!-- For replicating our object detection for this project, we have created two tutorials to follow along. The first provides an overview of how to build a custom dataset on RoboFlow, and the second covers how to train a YOLOv5 model based on custom objects. Both tutorials are located in the following directory:
 - /code/object-detection -->
@@ -245,8 +248,9 @@ deactivate
 - [Project Specification](admin/reports/Project_Specification.pdf)
 - [Milestone Report](admin/reports/Milestone_Report.pdf)
 - [Final Oral Presentation](admin/presentations/Final_Presentation.pdf)
-- [Final Video](https://youtu.be/ODEzaI_C438)
-- Techinal Report (under construction)
+- [Project Video](https://youtu.be/ODEzaI_C438)
+- [Technical Report](admin/reports/Technical_Report.pdf)
+
 
 
 ## Acknowledgements
